@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Seka</string>
+    <string name="action_settings">Settings</string>
+    <string name="stringCash">cash:</string>
+    <string name="stringBank">Bank:</string>
+    <string name="stringUserWin">You Win</string>
+</resources>
