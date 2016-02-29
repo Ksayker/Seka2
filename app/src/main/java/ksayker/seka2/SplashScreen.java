@@ -28,25 +28,19 @@ public class SplashScreen extends Activity {
             public void run() {
                 try {
                     synchronized(this){
-
-                        //wait 5 sec
                         wait(_splashTime);
                     }
-
                 } catch(InterruptedException e) {}
                 finally {
                     finish();
-
                     //start a new activity
                     Intent i = new Intent();
                     i.setClass(sPlashScreen, MainActivity.class);
                     startActivity(i);
-
                     finish();
                 }
             }
         };
-
         splashTread.start();
     }
 
