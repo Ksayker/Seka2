@@ -5,4 +5,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="textSize">20dp</dimen>
     <dimen name="TextSizeForCenterTextView">30dp</dimen>
+    <dimen name="logoTextSize">50dp</dimen>
 </resources>

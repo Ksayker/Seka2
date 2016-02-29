@@ -4,4 +4,6 @@
     <string name="stringCash">cash:</string>
     <string name="stringBank">Bank:</string>
     <string name="stringUserWin">You Win</string>
+    <string name="gameName">SEKA GAME</string>
+    <string name="createdBy">Created by Ksayker</string>
 </resources>
