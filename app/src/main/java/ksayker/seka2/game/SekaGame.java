@@ -3,7 +3,6 @@ package ksayker.seka2.game;
 import ksayker.seka2.game.players.CardGenerator;
 import ksayker.seka2.game.players.Comp;
 import ksayker.seka2.game.players.Player;
-import ksayker.seka2.game.players.User;
 
 /**
  * Created by Yurec on 27.02.2016.
@@ -41,7 +40,7 @@ public class SekaGame {
     private Player comp;
 
     public SekaGame() {
-        user = new User();
+        user = new Player();
         comp = new Comp();
     }
 

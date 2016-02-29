@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Yurec on 27.02.2016.
  */
-public class Comp extends AbstractPlayer {
+public class Comp extends Player {
     @Override
     public int doStep() {
         Random random = new Random();
