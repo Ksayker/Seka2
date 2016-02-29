@@ -3,10 +3,17 @@ package ksayker.seka2.game.players;
 import java.util.Random;
 
 /**
- * Created by Yurec on 27.02.2016.
+ * Class contain computer logic.
+ *
+ * @author Ksayker
+ * @data 27.02.2016
+ * @version 0.1
  */
 public class Comp extends Player {
     @Override
+    /**
+     * Get computer step.
+     */
     public int doStep() {
         Random random = new Random();
 

@@ -5,46 +5,75 @@ import ksayker.seka2.game.players.Comp;
 import ksayker.seka2.game.players.Player;
 
 /**
- * Created by Yurec on 27.02.2016.
+ * Class contain seka game logic.
+ * @author Kasyker
+ * @date 27.02.2016
+ * @version 0.1
  */
 @SuppressWarnings("FieldCanBeLocal")
 public class SekaGame {
+    /** Started cash game.*/
     private final int START_CASH_PLAYER = 100;
+    /** Default rate*/
     private final int DEFAULT_RATE = 5;
 
+    /** Message win to user*/
     private String messageWin = "You Win";
+    /** Message lose to user*/
     private String messageLose = "You Lose";
+    /** String value bank*/
     private String stringBank = "Bank: ";
+    /** String value cash*/
     private String stringCash = "cash: ";
 
+    /** Message to user from computer*/
     private String messageCompPassed = "Comp passed";
+    /** Message to user from computer*/
     private String messageCompShowCard = "Comp show card";
+    /** Message to user from computer*/
     private String messageCompDoBet = "Comp do bet";
+    /** Message to user*/
     private String messageGameWin = "YOU WIN!";
+    /** Message to user*/
     private String messageGameLose = "YOU LOSE.";
 
+    /** Cash in bank*/
     private int bank;
 
+    /** Stay enable bet button*/
     private boolean isEnableBet;
+    /** Stay enable show button*/
     private boolean isEnableShow;
+    /** Stay enable pass button*/
     private boolean isEnablePass;
+    /** Stay enable deal button*/
     private boolean isEnableDeal;
 
+    /** Stay display user card*/
     private boolean isVisibleUserCard;
+    /** Stay display comp card*/
     private boolean isVisibleCompCard;
 
+    /** Main message from game*/
     private String messageFromGame;
+    /** Message from computer*/
     private String messageFromComp;
 
+    /** User object*/
     private Player user;
+    /** User object*/
     private Player comp;
 
+    /** Seka game constructor*/
     public SekaGame() {
         user = new Player();
         comp = new Comp();
     }
 
 
+    /**
+     * Comp do bet.
+     */
     private void compDoBet() {
         messageFromComp = messageCompDoBet;
         comp.deductCash(DEFAULT_RATE);
@@ -56,6 +85,9 @@ public class SekaGame {
         isEnableDeal = !(user.isBankrupt() || comp.isBankrupt());
     }
 
+    /**
+     * Comp do show card.
+     */
     private void compDoShow() {
         if (user.getPlayerScore() >= comp.getPlayerScore()) {
             loseComp();
@@ -70,6 +102,9 @@ public class SekaGame {
         isEnableDeal = !(user.isBankrupt() || comp.isBankrupt());
     }
 
+    /**
+     * Comp do pass.
+     */
     private void compDoPass() {
         loseComp();
 
@@ -80,6 +115,9 @@ public class SekaGame {
         isEnableDeal = !(user.isBankrupt() || comp.isBankrupt());
     }
 
+    /**
+     * Comp lose.
+     */
     private void loseComp() {
         user.addCash(bank);
         bank = 0;
@@ -96,6 +134,9 @@ public class SekaGame {
         }
     }
 
+    /**
+     * Comp won.
+     */
     private void winComp() {
         comp.addCash(bank);
         bank = 0;
@@ -113,6 +154,9 @@ public class SekaGame {
         }
     }
 
+    /**
+     * Course of next player.
+     */
     private void courseOfTheNextPlayer() {
         int tactic = comp.doStep();
         switch (tactic) {
@@ -129,6 +173,9 @@ public class SekaGame {
         }
     }
 
+    /**
+     * Start new game.
+     */
     public void startNewGame() {
         bank = 0;
         user.setCash(START_CASH_PLAYER);
@@ -142,6 +189,9 @@ public class SekaGame {
         isEnableDeal = true;
     }
 
+    /**
+     * User press bet.
+     */
     public void userDoBet() {
         user.deductCash(DEFAULT_RATE);
         bank += DEFAULT_RATE;
@@ -150,6 +200,9 @@ public class SekaGame {
         courseOfTheNextPlayer();
     }
 
+    /**
+     * User press show.
+     */
     public void userDoShow() {
         if (comp.getPlayerScore() >= user.getPlayerScore()) {
             winComp();
@@ -163,6 +216,9 @@ public class SekaGame {
         isEnableDeal = !(user.isBankrupt() || comp.isBankrupt());
     }
 
+    /**
+     * User press pass.
+     */
     public void userDoPassed() {
         winComp();
 
@@ -172,6 +228,9 @@ public class SekaGame {
         isEnableDeal = !(user.isBankrupt() || comp.isBankrupt());
     }
 
+    /**
+     * User press deal.
+     */
     public void userDoDeal() {
         CardGenerator cardGenerator = new CardGenerator();
         user.setCards(cardGenerator.generateRandomCardsForPlayer());
@@ -191,6 +250,11 @@ public class SekaGame {
         isVisibleUserCard = true;
     }
 
+    /**
+     * Get current game state.
+     *
+     * @return Object that contain current game state.
+     */
     public GameState getGameState() {
         return new GameState(
                 stringCash + comp.getCash(),

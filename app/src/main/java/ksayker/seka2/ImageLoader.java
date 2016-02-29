@@ -6,9 +6,14 @@ import java.util.Map;
 import ksayker.seka2.game.players.cards.Cards;
 
 /**
- * Created by Yurec on 27.02.2016.
+ * Class designed for loading image resources to map.
  */
 public class ImageLoader {
+    /**
+     * Method for loading image resources to map.
+     *
+     * @return map with image resources.
+     */
     public Map<Cards, Integer> loadImages() {
         Map<Cards, Integer> result = new HashMap<>();
 

@@ -14,29 +14,49 @@ import ksayker.seka2.game.SekaGame;
 import ksayker.seka2.game.players.cards.Cards;
 
 public class MainActivity extends AppCompatActivity {
+    /** image view with left computer card*/
     private ImageView ivCompLeft;
+    /** image view with center computer card*/
     private ImageView ivCompCenter;
+    /** image view with right computer card*/
     private ImageView ivCompRight;
+    /** image view with left user card*/
     private ImageView ivUserLeft;
+    /** image view with center user card*/
     private ImageView ivUserCenter;
+    /** image view with right user card*/
     private ImageView ivUserRight;
 
+    /** button that started new game*/
     private Button btNewGame;
+    /** button do bet*/
     private Button btBet;
+    /** button do pass*/
     private Button btPass;
+    /** button do deal*/
     private Button btDeal;
+    /** button do show*/
     private Button btShow;
 
+    /** center message area*/
     private TextView tvCenterTable;
+    /** area with computer cash*/
     private TextView tvCompCash;
+    /** area with user cash*/
     private TextView tvUserCash;
+    /** area with message from computer*/
     private TextView tvCompMessage;
 
+    /** image loader*/
     private ImageLoader imageLoader;
+    /** main game controller*/
     private SekaGame sekaGame;
+    /** map with image resources*/
     private Map<Cards, Integer> images;
 
-
+    /**
+     * Method designed from creating game objects.
+     */
     private void createGameObjects() {
         ivCompLeft = (ImageView) findViewById(R.id.iv_compLeftCard);
         ivCompCenter = (ImageView) findViewById(R.id.iv_compCenterCard);
@@ -60,22 +80,34 @@ public class MainActivity extends AppCompatActivity {
         imageLoader = new ImageLoader();
     }
 
+    /**
+     * Loading images to map.
+     */
     private void loadImages() {
         images = imageLoader.loadImages();
     }
 
+    /**
+     * Hiding computer card.
+     */
     private void hideCompCard(){
         ivCompLeft.setImageResource(R.drawable.shirt);
         ivCompCenter.setImageResource(R.drawable.shirt);
         ivCompRight.setImageResource(R.drawable.shirt);
     }
 
+    /**
+     * Hiding user card.
+     */
     private void hideUserCard(){
         ivUserLeft.setImageResource(R.drawable.shirt);
         ivUserCenter.setImageResource(R.drawable.shirt);
         ivUserRight.setImageResource(R.drawable.shirt);
     }
 
+    /**
+     * Initialization click listeners.
+     */
     private void initOnClickListeners(){
         btNewGame.setOnClickListener(
                 new View.OnClickListener() {
@@ -125,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    /**
+     * Displaying current game state.
+     *
+     * @param gameState object that contain game state.
+     */
     private void displayGameState(GameState gameState){
         if (gameState.getMessageFromGame() != null){
             tvCenterTable.setText(gameState.getMessageFromGame());
@@ -159,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * with out btNewGame
+     * Disable game controlled button with out button new game.
      */
     private void disableGameControlButton(){
         btPass.setEnabled(false);
@@ -168,6 +205,9 @@ public class MainActivity extends AppCompatActivity {
         btDeal.setEnabled(false);
     }
 
+    /**
+     * Called when the activity with game is first created.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

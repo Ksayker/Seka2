@@ -3,40 +3,56 @@ package ksayker.seka2.game;
 import ksayker.seka2.game.players.PlayerCards;
 
 /**
- * Created by Yurec on 27.02.2016.
+ * Class contain game state.
+ *
+ * @author Ksayker
+ * @data 27.02.2016
+ * @version 0.1
  */
+@SuppressWarnings("JavaDoc")
 public class GameState {
+    /** string comp cash*/
     private String compCash;
+    /** string user cash*/
     private String userCash;
 
+    /** message from computer*/
     private String messageFromComputer;
+    /** message from game*/
     private String messageFromGame;
 
+    /** enable bet button*/
     private boolean isEnableBet;
+    /** enable show button*/
     private boolean isEnableShow;
+    /** enable pass button*/
     private boolean isEnablePass;
+    /** enable deal button*/
     private boolean isEnableDeal;
 
+    /** visible user card*/
     private boolean isVisibleUserCard;
+    /** visible comp card*/
     private boolean isVisibleCompCard;
 
     private PlayerCards userCards;
     private PlayerCards compCards;
 
     /**
-     * message from game перекрывает bank
-     * @param compCash
-     * @param userCash
-     * @param messageFromComputer
-     * @param isEnableBet
-     * @param isEnableShow
-     * @param isEnablePass
-     * @param isEnableDeal
-     * @param isVisibleCompCard
-     * @param isVisibleUserCard
-     * @param userCards
-     * @param compCards
-     * @param messageFromGame
+     * Game state constructor.
+     *
+     * @param compCash comp cash
+     * @param userCash user cash
+     * @param messageFromComputer message from computer
+     * @param isEnableBet is enable bet button
+     * @param isEnableShow is enable show button
+     * @param isEnablePass is enable pass button
+     * @param isEnableDeal is enable deal button
+     * @param isVisibleCompCard is visible user card
+     * @param isVisibleUserCard is visible comp card
+     * @param userCards user cards
+     * @param compCards comp cards
+     * @param messageFromGame message from game
      */
     public GameState(String compCash, String userCash, String messageFromComputer,
                      boolean isEnableBet, boolean isEnableShow, boolean isEnablePass,

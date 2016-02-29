@@ -3,49 +3,66 @@ package ksayker.seka2.game.players;
 import ksayker.seka2.game.players.cards.Cards;
 
 /**
- * Created by Yurec on 27.02.2016.
+ * @author Ksayker
+ * @data 27.02.2016
+ * @version 0.1
  */
 public class Player {
+    public static final int DO_NOTHING = 0;
+    /** player select bet*/
     public static final int DO_BET = 1;
+    /** player select show*/
     public static final int DO_SHOW = 2;
+    /** player select pass*/
     public static final int DO_PASS = 3;
 
+    /** player cash*/
     protected int cash;
+    /** player cards*/
     protected PlayerCards cards;
 
+    /** get player cash*/
     public int getCash() {
         return cash;
     }
 
+    /** add cash to player*/
     public void addCash(int value) {
         cash += value;
     }
 
+    /** deduct cash from player*/
     public void deductCash(int value) {
         cash -= value;
     }
 
+    /** return true if player bankrupt*/
     public boolean isBankrupt() {
         return cash <= 0;
     }
 
+    /** get player cards*/
     public PlayerCards getCards() {
         return cards;
     }
 
+    /** set player cash*/
     public void setCash(int cash) {
         this.cash = cash;
     }
 
+    /** get player tactic*/
     public int doStep() {
-        return 0;
+        return DO_NOTHING;
     }
 
+    /** set player card*/
     public void setCards(PlayerCards cards) {
         this.cards = cards;
 
     }
 
+    /** get current score*/
     public int getPlayerScore() {
         int crossScore = 0;
         int diamondsScore = 0;
